@@ -40,9 +40,9 @@ APP.pages.priceList = (function () {
             ${items.map(i => `
               <tr>
                 <td><strong>${u.escapeHtml(i.name)}</strong></td>
-                <td>${u.escapeHtml(i.unit)}</td>
-                <td class="text-right num">${u.formatMoney(i.price, currency)}</td>
-                <td class="text-muted">${u.escapeHtml(i.description || '—')}</td>
+                <td data-label="Ед.">${u.escapeHtml(i.unit)}</td>
+                <td class="text-right num" data-label="Цена">${u.formatMoney(i.price, currency)}</td>
+                <td class="text-muted" data-label="Описание">${u.escapeHtml(i.description || '—')}</td>
                 <td style="white-space:nowrap;">
                   <button class="btn btn-ghost btn-sm" data-edit="${i.id}">Изм.</button>
                   <button class="btn btn-ghost btn-sm" data-del="${i.id}">Удал.</button>

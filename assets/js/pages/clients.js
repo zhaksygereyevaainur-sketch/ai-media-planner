@@ -33,10 +33,10 @@ APP.pages.clients = (function () {
             ${rows.map(c => `
               <tr class="clickable" data-id="${c.id}">
                 <td><strong>${u.escapeHtml(c.name)}</strong></td>
-                <td>${u.escapeHtml(c.contactPerson || '—')}</td>
-                <td>${u.escapeHtml(c.industry || '—')}</td>
-                <td>${u.escapeHtml(c.phone || '—')}</td>
-                <td>${ui.badge(APP.CLIENT_STATUSES, c.status)}</td>
+                <td data-label="Контакт">${u.escapeHtml(c.contactPerson || '—')}</td>
+                <td data-label="Сфера">${u.escapeHtml(c.industry || '—')}</td>
+                <td data-label="Телефон">${u.escapeHtml(c.phone || '—')}</td>
+                <td data-label="Статус">${ui.badge(APP.CLIENT_STATUSES, c.status)}</td>
               </tr>`).join('')}
           </tbody>
         </table>
@@ -146,7 +146,7 @@ APP.pages.clients = (function () {
 
           <div class="card">
             <div class="section-title">Быстрые действия</div>
-            <div style="display:flex; gap:10px; flex-wrap:wrap;">
+            <div class="quick-actions" style="display:flex; gap:10px; flex-wrap:wrap;">
               <a class="btn btn-primary btn-sm" href="#/calculations/new?clientId=${client.id}">+ Новый расчёт</a>
               <a class="btn btn-secondary btn-sm" href="#/letters/new?clientId=${client.id}">+ Написать письмо</a>
             </div>

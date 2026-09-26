@@ -38,10 +38,10 @@ APP.pages.calculations = (function () {
               const totals = APP.calc.computeTotals(c);
               return `<tr class="clickable" data-id="${c.id}">
                 <td><strong>${u.escapeHtml(c.title || 'Без названия')}</strong></td>
-                <td>${u.escapeHtml(client ? client.name : '—')}</td>
-                <td>${u.formatDate(c.periodStart)} — ${u.formatDate(c.periodEnd)}</td>
-                <td class="text-right num">${u.formatMoney(totals.total, currency)}</td>
-                <td>${ui.badge(APP.CALC_STATUSES, c.status)}</td>
+                <td data-label="Клиент">${u.escapeHtml(client ? client.name : '—')}</td>
+                <td data-label="Период">${u.formatDate(c.periodStart)} — ${u.formatDate(c.periodEnd)}</td>
+                <td class="text-right num" data-label="Итого">${u.formatMoney(totals.total, currency)}</td>
+                <td data-label="Статус">${ui.badge(APP.CALC_STATUSES, c.status)}</td>
               </tr>`;
             }).join('')}
           </tbody>
@@ -195,13 +195,13 @@ APP.pages.calculations = (function () {
     const rows = draft.items.map((item, idx) => {
       const c = APP.calc.computeItem(item);
       return `<div class="item-row-grid" data-idx="${idx}">
-        <div>${u.escapeHtml(item.name)}</div>
-        <div class="text-muted">${u.escapeHtml(item.unit)}</div>
-        <div class="num">${u.formatMoney(item.price, currency)}</div>
-        <div><input type="number" min="0" step="1" value="${item.qty}" data-field="qty" data-idx="${idx}" class="line-input"></div>
-        <div><input type="number" min="0" max="100" value="${item.discount}" data-field="discount" data-idx="${idx}" class="line-input"></div>
-        <div class="num" id="line-total-${idx}">${u.formatMoney(c.lineAfterDiscount, currency)}</div>
-        <div><button class="btn btn-ghost btn-sm" data-remove-idx="${idx}" type="button" title="Удалить">✕</button></div>
+        <div class="cell-name">${u.escapeHtml(item.name)}</div>
+        <div class="cell-unit text-muted"><span class="cell-label">Ед.</span>${u.escapeHtml(item.unit)}</div>
+        <div class="cell-price num"><span class="cell-label">Цена</span>${u.formatMoney(item.price, currency)}</div>
+        <div class="cell-qty"><span class="cell-label">Кол-во</span><input type="number" min="0" step="1" value="${item.qty}" data-field="qty" data-idx="${idx}" class="line-input"></div>
+        <div class="cell-discount"><span class="cell-label">Скидка %</span><input type="number" min="0" max="100" value="${item.discount}" data-field="discount" data-idx="${idx}" class="line-input"></div>
+        <div class="cell-total num"><span class="cell-label">Сумма</span><span id="line-total-${idx}">${u.formatMoney(c.lineAfterDiscount, currency)}</span></div>
+        <div class="cell-remove"><button class="btn btn-ghost btn-sm" data-remove-idx="${idx}" type="button" title="Удалить">✕</button></div>
       </div>`;
     }).join('');
     return header + rows;

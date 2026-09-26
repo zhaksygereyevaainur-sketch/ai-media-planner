@@ -30,10 +30,10 @@ APP.pages.proposals = (function () {
               const client = APP.store.getById('clients', p.clientId);
               return `<tr class="clickable" data-id="${p.id}">
                 <td><strong>${u.escapeHtml(p.number)}</strong></td>
-                <td>${u.escapeHtml(client ? client.name : '—')}</td>
-                <td>${u.formatDate(p.date)}</td>
-                <td>${u.escapeHtml(APP.statusMeta(APP.PROPOSAL_STYLES, p.style).label)}</td>
-                <td>${ui.badge(APP.DOC_STATUSES, p.status)}</td>
+                <td data-label="Клиент">${u.escapeHtml(client ? client.name : '—')}</td>
+                <td data-label="Дата">${u.formatDate(p.date)}</td>
+                <td data-label="Стиль">${u.escapeHtml(APP.statusMeta(APP.PROPOSAL_STYLES, p.style).label)}</td>
+                <td data-label="Статус">${ui.badge(APP.DOC_STATUSES, p.status)}</td>
               </tr>`;
             }).join('')}
           </tbody>

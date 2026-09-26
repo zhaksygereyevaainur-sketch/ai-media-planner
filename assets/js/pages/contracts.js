@@ -30,9 +30,9 @@ APP.pages.contracts = (function () {
               const client = APP.store.getById('clients', c.clientId);
               return `<tr class="clickable" data-id="${c.id}">
                 <td><strong>${u.escapeHtml(c.number)}</strong></td>
-                <td>${u.escapeHtml(client ? client.name : '—')}</td>
-                <td>${u.formatDate(c.date)}</td>
-                <td>${ui.badge(APP.DOC_STATUSES, c.status)} <span class="badge badge-amber">DRAFT</span></td>
+                <td data-label="Клиент">${u.escapeHtml(client ? client.name : '—')}</td>
+                <td data-label="Дата">${u.formatDate(c.date)}</td>
+                <td data-label="Статус">${ui.badge(APP.DOC_STATUSES, c.status)} <span class="badge badge-amber">DRAFT</span></td>
               </tr>`;
             }).join('')}
           </tbody>

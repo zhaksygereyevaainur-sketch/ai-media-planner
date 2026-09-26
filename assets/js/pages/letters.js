@@ -24,9 +24,9 @@ APP.pages.letters = (function () {
               const client = APP.store.getById('clients', l.clientId);
               return `<tr class="clickable" data-id="${l.id}">
                 <td><strong>${u.escapeHtml(l.subject)}</strong></td>
-                <td>${u.escapeHtml(client ? client.name : '—')}</td>
-                <td>${u.escapeHtml(APP.statusMeta(APP.LETTER_TYPES, l.type).label)}</td>
-                <td>${u.formatDate(l.createdAt)}</td>
+                <td data-label="Клиент">${u.escapeHtml(client ? client.name : '—')}</td>
+                <td data-label="Тип">${u.escapeHtml(APP.statusMeta(APP.LETTER_TYPES, l.type).label)}</td>
+                <td data-label="Дата">${u.formatDate(l.createdAt)}</td>
               </tr>`;
             }).join('')}
           </tbody>

@@ -33,7 +33,7 @@ APP.pages.dashboard = (function () {
 
       <div class="card" style="margin-bottom:16px;">
         <div class="section-title">Быстрый старт</div>
-        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+        <div class="quick-actions" style="display:flex; gap:10px; flex-wrap:wrap;">
           <a class="btn btn-primary" href="#/calculations/new">+ Новый расчёт</a>
           <a class="btn btn-secondary" href="#/clients">+ Новый клиент</a>
           <a class="btn btn-secondary" href="#/letters/new">+ Написать письмо</a>
