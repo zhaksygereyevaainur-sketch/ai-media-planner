@@ -221,10 +221,10 @@ APP.pages.proposals = (function () {
         <td class="text-right">${u.formatMoney(c.lineAfterDiscount, currency)}</td>
       </tr>`;
     }).join('');
-    return `<table class="doc-table">
+    return `<div class="doc-table-scroll"><table class="doc-table">
       <thead><tr><th>Услуга</th><th>Ед.</th><th class="text-right">Кол-во</th><th class="text-right">Цена</th><th class="text-right">Скидка</th><th class="text-right">Сумма</th></tr></thead>
       <tbody>${rows}</tbody>
-    </table>`;
+    </table></div>`;
   }
 
   function totalsHtml(totals, currency) {
